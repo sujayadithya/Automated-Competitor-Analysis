@@ -1,0 +1,63 @@
+# Agent Rules — Competitor Research Project
+
+These rules apply to everything the agent does in this project, every run.
+
+## Before Starting Any Research
+- Always read context.md and rubric.md before doing anything else.
+- If context.md is empty or missing key sections, ask the user the setup
+  questions conversationally in chat (see .cursor/commands/research.md,
+  Step 1) before proceeding. Do not guess or invent product context.
+- If rubric.md is empty, use its defaults. Never invent scoring criteria
+  that aren't in rubric.md.
+
+## Competitor Discovery
+- Search for competitors based on context.md's product category. Do not
+  ask the user to approve the list before proceeding — just post it as
+  a visible update in chat.
+- If the user previously excluded a competitor (noted in context.md),
+  never include it again without being asked.
+
+## Flow Capture
+- If a competitor blocks access (login wall, CAPTCHA, paywall), skip it,
+  mark it "not captured" in the final report, and continue with the rest.
+  Never stop the entire run because one competitor is blocked.
+- Never fabricate screenshots, scores, or findings for a competitor that
+  couldn't be captured. Missing data stays missing and visible as such.
+- Screenshot naming convention:
+  research/[flow]-[date]/[competitor]/step-01-[short-label].png
+  (zero-padded step numbers, lowercase, hyphens not spaces)
+
+## Progress Updates
+- Post a short update after each competitor is captured, not after each
+  individual screenshot. Example: "Captured Notion ✅, Linear ✅, Asana ⚠️ (blocked by login)"
+- Do not narrate every tool call in detail — the task list / progress
+  line is enough. Keep the chat readable.
+
+## Scoring
+- Every score must include a one-line reason. A number with no reason
+  is not acceptable output.
+- Score consistently against the definitions in rubric.md — do not
+  improvise what a "4" means if the rubric already defines it.
+
+## Output
+- Build both the local HTML report and the Paper report as primary
+  outputs, per output-template.md. If Paper MCP fails or isn't
+  connected, still produce the HTML report in full — never skip output
+  entirely because one destination failed.
+- Follow output-template.md's structure exactly, every run, so reports
+  stay comparable over time.
+
+## Memory
+- Before building the final report, check Memory for a prior run of the
+  same flow. If one exists, add a "What Changed Since Last Run" section
+  as described in output-template.md.
+- After finishing, save this run's patterns and scores to Memory for
+  future comparison.
+
+## General
+- When uncertain whether to ask the user or proceed, prefer asking only
+  at the two checkpoints defined in research.md (competitor list, scope).
+  Do not ask for approval at every step — that defeats the point of
+  automation.
+- Never commit credentials, API keys, or .env contents to any file this
+  agent writes.
