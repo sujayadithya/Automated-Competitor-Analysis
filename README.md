@@ -1,4 +1,6 @@
-# Automated Competitor Analysis
+# Automated Competitor UX Research
+
+![Automated Competitor UX Research](./automated-competitor-ux-research-thumbnail.jpg)
 
 This project runs a competitor review of one product flow at a time. You describe your product once. Then, in Cursor chat, you name a flow. The agent finds competitors, walks the flow on the desktop web, scores what it sees, and writes a report.
 
@@ -16,8 +18,10 @@ Connect these MCP servers in Cursor before you run `/research`. Without them, th
 ## Get started
 
 1. Open this folder in Cursor.
-2. Fill in [`context.md`](context.md). That file is the product brief the agent reads before every run. If a section is still a placeholder, the agent will ask you one question at a time and write your answers in before it researches anything.
-3. Skim [`rubric.md`](rubric.md). Those 1–5 definitions are the only scores the agent is allowed to use. Edit them if a criterion does not match your product. Leave the file as-is to use the defaults: Info Density, Steps-to-Value, Error Clarity, and Edge-Case Handling.
+2. Fill in `[context.md](context.md)`. That file is the product brief the agent reads before every run. If a section is still a placeholder, the agent will ask you one question at a time and write your answers in before it researches anything.
+3. Skim `[rubric.md](rubric.md)`. Those 1–5 definitions are the only scores the agent is allowed to use. Edit them if a criterion does not match your product. Leave the file as-is to use the defaults: Info Density, Steps-to-Value, Error Clarity, and Edge-Case Handling.
+
+
 
 ## Run a review
 
@@ -50,12 +54,14 @@ Run `/research` with the same flow name later. If a previous run of that flow is
 
 ## What you can change
 
-| File | What it controls |
-|---|---|
-| `context.md` | Product, users, design principles, constraints, competitors to include or exclude |
-| `rubric.md` | What gets scored, and what a 1, 3, and 5 mean |
-| `output-template.md` | The sections every report must include |
-| `.cursor/commands/research.md` | The steps the `/research` command runs |
-| `.cursorrules` | How a run behaves: blocked competitors, screenshot names, progress updates, and when to ask versus continue |
+
+| File                           | What it controls                                                                                            |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| `context.md`                   | Product, users, design principles, constraints, competitors to include or exclude                           |
+| `rubric.md`                    | What gets scored, and what a 1, 3, and 5 mean                                                               |
+| `output-template.md`           | The sections every report must include                                                                      |
+| `.cursor/commands/research.md` | The steps the `/research` command runs                                                                      |
+| `.cursorrules`                 | How a run behaves: blocked competitors, screenshot names, progress updates, and when to ask versus continue |
+
 
 Change `context.md` or `rubric.md` before a run when the product or the scorecard changes. Leave `output-template.md` alone if you want reports to stay comparable.
